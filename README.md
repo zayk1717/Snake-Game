@@ -56,7 +56,7 @@ README.md
 Deployed via Vercel
 
 Author
-🐙 github.com/SRCarlo
+🐙 github.com/ [SRCarlo](https://github.com/SRCarlo)
 
 License
 MIT License © 2025 [SRCarlo](https://github.com/SRCarlo)
