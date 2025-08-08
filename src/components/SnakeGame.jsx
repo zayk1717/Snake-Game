@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 
-
 const GRID_SIZE = 20;
 
 const DIRECTIONS = {
@@ -40,10 +39,7 @@ export default function SnakeGame() {
       if (gameOver) return;
       if (DIRECTIONS[e.key]) {
         const newDir = DIRECTIONS[e.key];
-        if (
-          (newDir.x !== -direction.x || newDir.y !== -direction.y) &&
-          (newDir.x !== direction.x || newDir.y !== direction.y)
-        ) {
+        if (newDir.x !== -direction.x || newDir.y !== -direction.y) {
           setDirection(newDir);
         }
       }
@@ -104,10 +100,7 @@ export default function SnakeGame() {
 
   const handleButtonDirection = (dir) => {
     if (gameOver) return;
-    if (
-      (dir.x !== -direction.x || dir.y !== -direction.y) &&
-      (dir.x !== direction.x || dir.y !== direction.y)
-    ) {
+    if (dir.x !== -direction.x || dir.y !== -direction.y) {
       setDirection(dir);
     }
   };
@@ -148,7 +141,7 @@ export default function SnakeGame() {
             else if (isSnake)
               baseClasses += " bg-green-400 dark:bg-green-600 rounded-sm";
 
-            return <div key={i} className={baseClasses} />;
+            return <div key={`${x}-${y}`} className={baseClasses} />;
           })}
       </div>
 
@@ -164,13 +157,14 @@ export default function SnakeGame() {
           aria-label="Restart Game"
           className="px-4 py-1 rounded bg-indigo-600 dark:bg-indigo-500 text-white
             hover:bg-indigo-700 dark:hover:bg-indigo-600 transition w-full sm:w-auto"
+          type="button"
         >
           Restart
         </button>
       </div>
 
       <div className="flex justify-center mt-4 space-x-3 sm:space-x-4 select-none flex-wrap gap-3">
-        {[
+        {[ 
           { label: "↑", dir: DIRECTIONS.ArrowUp },
           { label: "←", dir: DIRECTIONS.ArrowLeft },
           { label: "→", dir: DIRECTIONS.ArrowRight },
@@ -181,7 +175,7 @@ export default function SnakeGame() {
             onClick={() => handleButtonDirection(dir)}
             className="p-3 bg-indigo-600 text-white rounded shadow hover:bg-indigo-700 transition
             w-12 h-12 text-xl flex justify-center items-center"
-            aria-label={label}
+            aria-label={`Move ${label}`}
             type="button"
           >
             {label}

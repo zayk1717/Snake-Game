@@ -31,11 +31,12 @@ export default function App() {
       }`}
     >
       <header className="max-w-4xl w-full flex flex-col sm:flex-row justify-between items-center mb-8 select-none space-y-4 sm:space-y-0">
-        <GameTitle />
+        <GameTitle darkMode={darkMode} />
         <button
           aria-label="Toggle Dark Mode"
           onClick={() => setDarkMode(!darkMode)}
           className="p-2 rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+          type="button"
         >
           {darkMode ? (
             <FiSun size={24} className="text-yellow-400" />
